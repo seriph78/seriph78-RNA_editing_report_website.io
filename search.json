@@ -11,6 +11,6 @@
     "href": "index.html",
     "title": "RNA editing report website",
     "section": "",
-    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n\n\n\nflowchart TB\n  A[Raw data] -->|cleaning - cl notebook| B(Saved cleaned data)\n  B -->|COTAN analysis src | C( COTAN obj )\n  C --> |COTAN clustering src| D(COTAN obj clustered) \n  B -->|Seurat analysis src| CC(Seurat obj )\n  D --> CD(Seurat obj + COTAN clusters)\n  CC --> CD\n  \n  D -->|Data exploration + Markers +cluster identification notebook| E(COTAN & Seurat obj clustered)\n  CD --> |Data exploration + Markers +cluster identification notebook|E\n  \n  E -->  |Exploration & Conclusion notebook| F(  )"
   }
 ]

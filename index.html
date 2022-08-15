@@ -53,6 +53,9 @@ ul.task-list{list-style: none;}
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -112,6 +115,32 @@ ul.task-list{list-style: none;}
 
 <p>This is a Quarto website.</p>
 <p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart TB
+  A[Raw data] --&gt;|cleaning - cl notebook| B(Saved cleaned data)
+  B --&gt;|COTAN analysis src | C( COTAN obj )
+  C --&gt; |COTAN clustering src| D(COTAN obj clustered) 
+  B --&gt;|Seurat analysis src| CC(Seurat obj )
+  D --&gt; CD(Seurat obj + COTAN clusters)
+  CC --&gt; CD
+  
+  D --&gt;|Data exploration + Markers +<br>cluster identification notebook| E(COTAN &amp; Seurat obj clustered)
+  CD --&gt; |Data exploration + Markers +<br>cluster identification notebook|E
+  
+  E --&gt;  |Exploration &amp; Conclusion notebook| F(  ) 
+
+  
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
 
 
 
