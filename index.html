@@ -120,19 +120,38 @@ ul.task-list{list-style: none;}
 <div>
 <p>
 </p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart TB
-  A[Raw data] --&gt;|cleaning - cl notebook| B(Saved cleaned data)
-  B --&gt;|COTAN analysis src | C( COTAN obj )
-  C --&gt; |COTAN clustering src| D(COTAN obj clustered) 
-  B --&gt;|Seurat analysis src| CC(Seurat obj )
-  D --&gt; CD(Seurat obj + COTAN clusters)
-  CC --&gt; CD
   
-  D --&gt;|Data exploration + Markers +<br>cluster identification notebook| E(COTAN &amp; Seurat obj clustered)
-  CD --&gt; |Data exploration + Markers +<br>cluster identification notebook|E
+ 
   
-  E --&gt;  |Exploration &amp; Conclusion notebook| F(  ) 
+  A[(Raw data)] --- t1(cleaning notebook) 
+  t1 --&gt; B[(Cleaned data)]
+  B --- t2(COTAN analysis src)  --&gt; C[(COTAN obj)]
+  
+  C --- t3(COTAN clustering src) --&gt; D[(Clustered COTAN obj)] 
+  
+  B --- t4(Seurat analysis src) --&gt; E[(Seurat obj)]
+  
+  E --- t3
+  
+  t3 --&gt; CD[(Seurat obj with COTAN cl.)]
+  
+  CD --&gt; t5(Data exploration + Markers +<br>cluster identification notebook) 
+  
+  D --&gt; t5
+  
+  t5 --&gt; G[(Seurat obj with cell id)]
+  t5 --&gt; H[(COTAN obj with cell id)]
+  
+  G --&gt;  t6(Exploration &amp; Conclusion notebook) 
+  H --&gt; t6
+  
+  
+  classDef src fill:#66cc33;
+  classDef notebook fill:#cc99ff;
+  
+  class t1,t5,t6 notebook;
+  class t2,t3,t4 src;
 
-  
 </pre>
 <div id="mermaid-tooltip-1" class="mermaidTooltip">
 
